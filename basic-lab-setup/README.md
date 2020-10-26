@@ -6,11 +6,12 @@ A small leaf-and-spine network which comprises four vEOS switches hosted on EVE-
 
 ```bash
 $ grep '.test' /etc/hosts
-192.168.1.5	eve-ng.test
-192.168.1.161	leaf-1.test
-192.168.1.162	leaf-2.test
+192.168.1.5	    eve-ng.test
 192.168.1.151	spine-1.test
 192.168.1.152	spine-2.test
+192.168.1.161	leaf-1.test
+192.168.1.162	leaf-2.test
+
 ```
 
 ## Running 'show version' with ansible.builtin.raw
