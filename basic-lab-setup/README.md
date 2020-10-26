@@ -1,5 +1,6 @@
 # Network Automation Lab
 A small leaf-and-spine network which comprises four vEOS switches hosted on EVE-NG.
+![lab topology](lab-topology.png "Leaf and Spine lab topology")
 
 ## Running 'show version' with ansible.builtin.raw
 ```bash
