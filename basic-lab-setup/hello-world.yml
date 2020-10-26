@@ -1,0 +1,9 @@
+---
+- hosts: eos
+  become: false
+  gather_facts: false
+  tasks:
+    - raw: "show version"
+      register: show_version
+    - debug:
+        var: show_version

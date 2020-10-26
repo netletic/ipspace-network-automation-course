@@ -1,0 +1,22 @@
+---
+- hosts: eos
+  become: false
+  gather_facts: false
+  vars:
+    ansible_connection: ansible.netcommon.network_cli
+
+  handlers:
+    - name: Save configuration
+      arista.eos.eos_command:
+        commands: write
+
+  tasks:
+    - name: Ensure eAPI is enabled. HTTPS only.
+      become: true
+      become_method: enable
+      when: ansible_network_os == 'arista.eos.eos'
+      arista.eos.eos_eapi:
+        enable_http: false
+        enable_https: true
+      notify: 
+        - Save configuration
