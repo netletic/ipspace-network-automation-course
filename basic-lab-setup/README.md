@@ -2,10 +2,12 @@
 A small leaf-and-spine network which comprises four vEOS switches hosted on EVE-NG.
 
 ## Running 'show version' with ansible.builtin.raw
-```ansible-playbook hello-world.yml --ask-pass```
+```bash
+ansible-playbook hello-world.yml --ask-pass
+```
 
 ## Activating eAPI for future use (https only)
-```
+```bash
 $ ansible-playbook enable-eos-eapi.yml --ask-pass
 SSH password: 
 
