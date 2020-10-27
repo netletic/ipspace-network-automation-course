@@ -19,7 +19,7 @@ ansible-playbook hello-world.yml --ask-pass
 ```
 
 ## Activating eAPI for future use (https only)
-```bash
+```yaml
 $ ansible-playbook enable-eos-eapi.yml --ask-pass
 SSH password: 
 
