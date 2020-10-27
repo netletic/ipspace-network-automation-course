@@ -1,0 +1,7 @@
+ansible_network_os: eos
+ansible_connection: network_cli
+ansible_user: admin
+ansible_become: yes
+ansible_become_method: enable
+ansible_python_interpreter: ~/.virtualenvs/eos-leaf-and-spine/bin/python
+ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
