@@ -1,0 +1,2 @@
+hostname spine-1
+location rack-1

@@ -1,0 +1,23 @@
+---
+- hosts: all
+  connection: local
+
+  pre_tasks:
+    - name: "Ensure existing config files are gone."
+      run_once: true
+      file:
+        path: configs
+        state: absent
+
+    - name: "Ensure a new configs directory exists."
+      run_once: true
+      file:
+        path: configs
+        state: directory
+
+
+  tasks:
+    - name: "Create configuration for networking devices."
+      template:
+        src: "{{ ansible_network_os }}/common.j2"
+        dest: "configs/{{ inventory_hostname}}.txt"

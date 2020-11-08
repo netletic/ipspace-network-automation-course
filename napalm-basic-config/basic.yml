@@ -1,0 +1,36 @@
+---
+- name: "Simple configuration"
+  hosts: all
+  gather_facts: false
+  vars:
+    conf_dir: "{{ playbook_dir }}/.compiled/"
+  
+  pre-tasks:
+    - name: "Assign tmp folder to host"
+      set_fact:
+        host_tmpdir: "{{ conf_dir }}/{{ inventory_hostname}}"
+      changed_when: false
+      check_mode: false
+
+    - name: "Make sure there are no reomains from a previous run"
+      file:
+        path: "{{ host_tmpdir }}"
+        state: absent
+      changed_when: false
+      check_mode: false
+
+    - name: "Create folder to store configurations and diffs for/from the devices"
+      file:
+        path: "{{ host_tmpdir }}"
+        state: directory
+      changed_when: false
+      check_mode: false
+
+- name: "Automated Configuration"
+  hosts: all
+  connection: local
+  roles:
+    - base
+    - ip
+  
+  

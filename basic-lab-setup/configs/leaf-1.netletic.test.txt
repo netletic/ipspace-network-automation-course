@@ -1,0 +1,2 @@
+hostname leaf-1
+location rack-1

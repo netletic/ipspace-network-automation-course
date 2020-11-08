@@ -1,0 +1,13 @@
+---
+- hosts: eos
+  gather_facts: false
+
+  tasks:
+    - raw: "show version"
+      register: show_version
+    - debug:
+        # show_version output per line
+        var: show_version.stdout_lines
+    - debug:
+        # vars is a special variable, shows all vars particular to the host
+        var: vars

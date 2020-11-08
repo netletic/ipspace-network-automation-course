@@ -1,0 +1,12 @@
+---
+interfaces:
+  - name: "Et1"
+    description: "leaf-1"
+    ips:
+      - "10.253.0.0/31"
+    enabled: true
+  - name: "Et2"
+    description: "leaf-2"
+    ips:
+      - "10.253.0.2/31"
+    enabled: true
