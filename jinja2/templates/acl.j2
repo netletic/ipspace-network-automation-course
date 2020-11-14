@@ -1,6 +1,0 @@
-{% for acl_name, rules in acls.items() %}
-ip access-list extended {{ acl_name }}
-{% for rule in rules  %}
-  {{ loop.index * 10 }} {{ rule }}
-{% endfor %}
-{% endfor %}
