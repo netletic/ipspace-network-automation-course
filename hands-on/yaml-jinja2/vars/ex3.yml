@@ -1,0 +1,7 @@
+# Create a list 2 of hostnames (each hostname is a FQDN string)
+---
+hostnames:
+  - leaf-1.netletic.test
+  - leaf-2.netletic.test
+  - spine-1.netletic.test
+  - spine-2.netletic.test

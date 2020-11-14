@@ -1,0 +1,48 @@
+# Create a BGP router description containing:
+#   hostname (string), loopback (IP address), asn (number) and
+#   banner (6 lines, preserve the newlines)
+#   interfaces: list of name / address pairs, where every address is an
+#     IP address using CIDR prefix notation (for example, 192.168.1.1/24).
+#     Use inline dictionary syntax for the elements of this list.
+#    neighbors: list of BGP neighbors (see above)
+---
+hostname: ir-1
+loopback: 192.168.252.1
+asn: 65301
+banner: |
+  UNAUTHORIZED ACCESS TO THIS DEVICE IS PROHIBITED
+
+  You must have explicit, authorized permission to access or configure this
+  device.Unauthorized attempts and actions to access or use this system may
+  result in civil and/or criminal penalties.
+  All activities performed on this device are logged and monitored.
+interfaces:
+  - name: 1/1/1
+    address: 10.24.1.1/24
+  - name: 1/1/2
+    address: 10.24.2.1/24
+bgp_neighbors:
+  - address: 1.1.1.1
+    asn: 65401
+    description: telenet
+    state: present
+  - address: 2.2.2.2
+    asn: 65402
+    description: proximus
+    state: absent
+    policy: incr-hop-count-by-5
+  - address: 3.3.3.3
+    asn: 65403
+    description: voo
+    state: down
+  - address: 4.4.4.4
+    asn: 65404
+    description: belnet
+    state: present
+    prefixes: ["4.4.4.0/24", "8.8.8.0/23"]
+  - address: 5.5.5.5
+    asn: 65405
+    description: bnix
+    state: present
+    prefixes: ["5.5.5.0/21"]
+    policy: incr-hop-count-by-2

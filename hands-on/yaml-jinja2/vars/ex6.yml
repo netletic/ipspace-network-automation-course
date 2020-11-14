@@ -1,0 +1,27 @@
+# Create a list of BGP neighbors having:
+#  Mandatory: address (IP address), description (string) and asn
+#  Optional: state (present, absent or down) and policy (route map name)
+---
+bgp_neighbors:
+  - address: 1.1.1.1
+    asn: 65401
+    description: telenet
+    state: present
+  - address: 2.2.2.2
+    asn: 65402
+    description: proximus
+    state: absent
+    policy: INCR_HOP_COUNT_BY_5
+  - address: 3.3.3.3
+    asn: 65403
+    description: voo
+    state: down
+  - address: 4.4.4.4
+    asn: 65404
+    description: belnet
+    state: present
+  - address: 5.5.5.5
+    asn: 65405
+    description: bnix
+    state: present
+    policy: INCR_HOP_COUNT_BY_2

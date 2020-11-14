@@ -1,4 +1,6 @@
 ---
+ansible_host: leaf-1.netletic.test
+description: "{{ inventory_hostname }} running {{ ansible_network_os }} at {{ ansible_host }}"
 interfaces:
   - name: "Et1"
     description: "spine-1"

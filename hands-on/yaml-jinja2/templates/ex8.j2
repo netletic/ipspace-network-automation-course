@@ -1,0 +1,42 @@
+hostname {{ hostname }}
+!
+interface loopback 0
+    ip address {{ loopback }} 255.255.255.0
+!
+banner motd #
+{{ banner }}
+#
+!
+{% for n in bgp_neighbors %}
+{% if n.prefixes %}
+{% for prefix in n.prefixes %}
+ip prefix-list bgp-neighbor-{{ n.address }} seq {{ loop.index * 10 }} permit {{ prefix }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+!
+router bgp 64000
+{% for n in bgp_neighbors %}
+{% if n.state == "absent" %}
+    no neighbor {{ n.address }}
+{% elif n.state == "down" %}
+    neighbor {{ n.address }} shutdown
+{% else %}
+    neighbor {{ n.address }} remote-as {{ n.asn }}
+    neighbor {{ n.address }} description {{ n.description }}
+{% if n.policy %}
+    neighbor {{ n.address }} route-map {{ n.policy }}
+{% endif %}
+{% if n.prefixes %}
+    neighbor {{ n.address }} prefix-list bgp-neighbor-{{ n.address }} in
+{% endif %}
+{% endif %}
+    !
+{% endfor %}
+    end
+!
+{% for interface in interfaces %}
+interface {{ interface.name }}
+    ip address {{ interface.address | ipaddr('address') }} {{ interface.address | ipaddr('netmask')}}
+    no shutdown
+{% endfor %}

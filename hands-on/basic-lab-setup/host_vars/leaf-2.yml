@@ -1,0 +1,3 @@
+---
+ansible_host: leaf-2.netletic.test
+location: rack-2

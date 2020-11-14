@@ -1,0 +1,14 @@
+router bgp 64000
+{% for n in bgp_neighbors %}
+{% if n.state == "absent" %}
+    no neighbor {{ n.address }}
+{% elif n.state == "down" %}
+    neighbor {{ n.address }} shutdown
+{% else %}
+    neighbor {{ n.address }} remote-as {{ n.asn }}
+    neighbor {{ n.address }} description {{ n.description }}
+{% if n.policy %}
+    neighbor {{ n.address }} route-map {{ n.policy }}
+{% endif %}
+{% endif %}
+{% endfor %}

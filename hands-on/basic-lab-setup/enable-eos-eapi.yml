@@ -4,6 +4,9 @@
   
   vars:
     ansible_connection: ansible.netcommon.network_cli
+  
+  vars_files:
+    - secure/initial_password.yml
 
   handlers:
     - name: save configuration

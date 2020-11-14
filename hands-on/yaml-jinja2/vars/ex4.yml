@@ -1,0 +1,7 @@
+# Create list of username (string) / password (string) pairs.
+---
+users:
+  - username: admin
+    password: placeholder
+  - username: helpdesk
+    password: placeholder

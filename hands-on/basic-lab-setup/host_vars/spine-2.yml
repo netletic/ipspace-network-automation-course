@@ -1,0 +1,3 @@
+---
+ansible_host: spine-2.netletic.test
+location: rack-2

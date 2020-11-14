@@ -1,0 +1,25 @@
+{% macro fabric_interfaces(node) %}
+{% set interfaces = fabric|selectattr('left', 'equalto', node)| list %}
+{% for interface in interfaces %}
+interface {{ interface.left_port }}
+    ip address {{ interface.left_ip}} 255.255.255.252
+    no shutdown
+    ip ospf 1 area 0
+{% endfor %}
+{% endmacro %}
+{% set rid = nodes|selectattr('name', 'equalto', node)|map(attribute='rid')|first %}
+{% set mgmt = nodes|selectattr('name', 'equalto', node)|map(attribute='mgmt')| first | replace(" ", "/") %}
+{% set mgmt_ip = mgmt | ipaddr('address') %}
+{% set mgmt_netmask =  mgmt | ipaddr('netmask') | default('255.255.255.0') %}
+hostname {{ node }}
+!
+interface loopback 0
+    ip address {{ rid }} 255.255.255.255 
+!
+interface GigabitEthernet0/0
+    ip address {{ mgmt_ip }} {{ mgmt_netmask }}
+!
+{{ fabric_interfaces(node) }}
+!
+router ospf 1
+    router-id {{ rid }}

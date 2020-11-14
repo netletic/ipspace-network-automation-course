@@ -1,0 +1,17 @@
+---
+all:
+  hosts:
+    ntp-server:
+    dns-server:
+leaf:
+  hosts:
+    leaf-1.netletic.test:
+    leaf-2.netletic.test:
+spine:
+  hosts:
+    spine-1.netletic.test:
+    spine-2.netletic.test:
+eos:
+  children:
+    leaf:
+    spine:

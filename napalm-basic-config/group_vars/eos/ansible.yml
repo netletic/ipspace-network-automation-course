@@ -1,0 +1,5 @@
+ansible_network_os: arista.eos.eos
+ansible_connection: ansible.netcommon.httpapi
+ansible_become: yes
+ansible_become_method: enable
+

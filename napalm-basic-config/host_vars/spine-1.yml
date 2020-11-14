@@ -1,4 +1,5 @@
 ---
+ansible_host: spine-1.netletic.test
 interfaces:
   - name: "Et1"
     description: "leaf-1"

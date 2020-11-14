@@ -1,0 +1,15 @@
+# Create a list of users having:
+#  Mandatory: username and password
+#  Optional: privilege (number) and autocommand (string) attributes
+---
+users:
+  - username: admin
+    password: placeholder
+    privilege: 15
+    autocommand: show version
+  - username: helpdesk
+    password: placeholder
+    autocommand: show interface status
+  - username: rescue
+    password: placeholder
+    privilege: 15

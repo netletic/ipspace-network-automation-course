@@ -1,0 +1,9 @@
+hostname {{ hostname }}
+!
+interface loopback 0
+    ip address {{ loopback }} 255.255.255.255
+!
+{% for interface in interfaces %}
+interface {{ interface }}
+    no shutdown
+{% endfor %}
