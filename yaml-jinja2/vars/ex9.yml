@@ -2,7 +2,7 @@
 # Fabric definition
 #
 ---
-node: E2
+node: E1
 fabric:
   - {
       left: E1,
