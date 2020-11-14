@@ -1,2 +1,0 @@
-hostname leaf-2
-location rack-2
