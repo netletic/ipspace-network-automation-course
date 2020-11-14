@@ -1,5 +1,0 @@
----
-syslog_host_ip4: 172.31.83.6
-snmp_host_ip4: 172.31.83.7
-snmp_community: netletic
-snmp_contact: netletic@gmail.com
